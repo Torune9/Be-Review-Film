@@ -69,7 +69,7 @@ class AuthController extends Controller
             ],400);
         }
 
-        $user_email = Users::where('email',$request->email);
+        $user_email = Users::where('email',$request->email)->first();
 
         if($user_email){
             return response()->json([
