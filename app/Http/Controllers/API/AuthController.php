@@ -57,11 +57,12 @@ class AuthController extends Controller
             'role' => 'required|string'
         ]);
 
-        $validated = $validator->validated();
-
         if ($validator->fails()) {
             return response()->json($validator->failed(), 400);
         }
+
+        $validated = $validator->validated();
+
 
         if($validated['password'] !== $validated['password_confirmation']){
             return response()->json([
