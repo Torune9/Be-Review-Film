@@ -120,7 +120,7 @@ class AuthController extends Controller
             return response()->json(['error' => $validator->errors()], 400);
         }
         if (!$token = JWTAuth::attempt($credentials)) {
-            return response()->json(['error' => 'Invalid email or password'], 401);
+            return response()->json(['error' => 'Invalid email or password'], 400);
         }
 
         $user = Users::where('email',$request->email)->first();
